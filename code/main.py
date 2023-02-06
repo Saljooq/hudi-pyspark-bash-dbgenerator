@@ -1,3 +1,5 @@
+#  Standard way of running this file is 'python main.py' or 'python3 main.py'
+
 from typing import List
 from pyspark.sql import SparkSession
 from pyspark.sql.dataframe import DataFrame
@@ -78,8 +80,16 @@ if __name__ == "__main__":
     # https://mvnrepository.com/artifact/org.apache.hudi/hudi-spark-bundle
     # and make sure it matches the name given in config
 
+    jar_name = 'hudi-spark3.3-bundle_2.12-0.12.2.jar'
+
+    if not os.path.exists(jar_name):
+
+        import urllib.request
+        url = f'https://repo1.maven.org/maven2/org/apache/hudi/hudi-spark3.3-bundle_2.12/0.12.2/{jar_name}'
+        urllib.request.urlretrieve(url, jar_name)
+
     spark = SparkSession.builder.config('spark.serializer', 'org.apache.spark.serializer.KryoSerializer')\
-    .config('spark.driver.extraClassPath', 'hudi-spark3.3-bundle_2.12-0.12.0.jar') \
+    .config('spark.driver.extraClassPath', jar_name) \
     .config('spark.serializer','org.apache.spark.serializer.KryoSerializer') \
     .config('spark.sql.extensions','org.apache.spark.sql.hudi.HoodieSparkSessionExtension') \
     .enableHiveSupport().getOrCreate()

@@ -3,6 +3,8 @@
 #  This is deprecated - please use `python file-name.py` instead unless you want to
 #  test apis on the terminal
 
+echo "This is deprecated, please use 'python main.py' instead"
+
 if [ "$#" != "1" ]; then
     pyspark \
     --packages org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.0 \
