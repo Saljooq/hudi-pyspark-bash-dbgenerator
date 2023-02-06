@@ -73,7 +73,15 @@ def main(spark: SparkSession):
 
 
 if __name__ == "__main__":
-    # main(SparkSession.builder.getOrCreate())
-    spark = SparkSession.builder.config('spark.serializer', 'org.apache.spark.serializer.KryoSerializer').enableHiveSupport().getOrCreate()
+    
+    # To put hudi bundle on path, just download from here:
+    # https://mvnrepository.com/artifact/org.apache.hudi/hudi-spark-bundle
+    # and make sure it matches the name given in config
+
+    spark = SparkSession.builder.config('spark.serializer', 'org.apache.spark.serializer.KryoSerializer')\
+    .config('spark.driver.extraClassPath', 'hudi-spark3.3-bundle_2.12-0.12.0.jar') \
+    .config('spark.serializer','org.apache.spark.serializer.KryoSerializer') \
+    .config('spark.sql.extensions','org.apache.spark.sql.hudi.HoodieSparkSessionExtension') \
+    .enableHiveSupport().getOrCreate()
     main(spark)
 
