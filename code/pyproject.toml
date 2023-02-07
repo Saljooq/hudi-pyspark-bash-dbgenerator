@@ -5,6 +5,8 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
 
+# [tool.distutils.bdist_wheel]
+# universal = true
 
 [project]
 name = "hudi_pyspark_bash_exp"

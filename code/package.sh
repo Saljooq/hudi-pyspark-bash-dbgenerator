@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-python -m pip install -e .
+python3 -m build --wheel
