@@ -9,7 +9,7 @@ import os
 
 def main(spark: SparkSession):
 
-    loc = f"{os.getcwd()}/.."
+    loc = f"{os.getcwd()}/../.."
 
     input_table_names = ['user_table', 'user_chocolate_table', 'chocolate_table']
 

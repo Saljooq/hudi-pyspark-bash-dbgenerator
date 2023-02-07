@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+
+
+[project]
+name = "hudi_pyspark_bash_exp"
+version = "0.0.1"
+authors = [
+  { name="Saljooq Altaf", email="altaf.saljooq@outlook.com" },
+]
+description = "This is meant to allow anyone to use pyspark and hudi apis and learn how to use them locally"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
