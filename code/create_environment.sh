@@ -6,6 +6,7 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 
+echo
 echo "Now you must enter 'source venv/bin/activate' to use virtual environment"
 echo
 echo "type 'deactivate' to leave the virtual envioronment"

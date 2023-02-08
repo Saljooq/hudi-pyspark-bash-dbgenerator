@@ -9,7 +9,7 @@ import os
 
 def main(spark: SparkSession):
 
-    loc = f"{os.getcwd()}/../.."
+    loc = f"{os.getcwd()}/../../.."
 
     input_table_names = ['user_table', 'user_chocolate_table', 'chocolate_table']
 
@@ -77,6 +77,26 @@ def main(spark: SparkSession):
 if __name__ == "__main__":
     
     # To put hudi bundle on path, just download from here:
+    # https://mvnrepository.com/artifact/org.apache.hudi/hudi-spark-bundle
+    # and make sure it matches the name given in config
+
+    jar_name = 'hudi-spark3.3-bundle_2.12-0.12.2.jar'
+
+    if not os.path.exists(jar_name):
+
+        import urllib.request
+        url = f'https://repo1.maven.org/maven2/org/apache/hudi/hudi-spark3.3-bundle_2.12/0.12.2/{jar_name}'
+        urllib.request.urlretrieve(url, jar_name)
+
+    spark = SparkSession.builder.config('spark.serializer', 'org.apache.spark.serializer.KryoSerializer')\
+    .config('spark.driver.extraClassPath', jar_name) \
+    .config('spark.serializer','org.apache.spark.serializer.KryoSerializer') \
+    .config('spark.sql.extensions','org.apache.spark.sql.hudi.HoodieSparkSessionExtension') \
+    .enableHiveSupport().getOrCreate()
+    main(spark)
+
+def main2():
+        # To put hudi bundle on path, just download from here:
     # https://mvnrepository.com/artifact/org.apache.hudi/hudi-spark-bundle
     # and make sure it matches the name given in config
 

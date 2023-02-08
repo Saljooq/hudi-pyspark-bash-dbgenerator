@@ -7,6 +7,10 @@ This part contains
 
 To run the main script simpy type 
 ```bash
-$ cd code/src/
+$ ./code/create_environment.sh
+$ source venv/bin/activate
+$ cd code/src/hudi_pysp*
 $ python3 main.py 
 ```
+
+The proper way to open your project for development is to run `./start_editor.sh` from the outer folder
